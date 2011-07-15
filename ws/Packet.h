@@ -38,6 +38,9 @@ public:
 	HandShakePacket(const std::string& hostname, const std::string& origin, const std::string& protocol = "");
 	~HandShakePacket();
 
+    std::string getPath() const;
+    void setPath(std::string path);
+	
 	const std::string ToString();
 
 private:
@@ -46,6 +49,7 @@ private:
 	std::string hostname;
 	std::string origin;
 	std::string protocol;
+	std::string path;
 };
 
 class Packet {

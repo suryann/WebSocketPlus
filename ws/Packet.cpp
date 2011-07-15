@@ -41,9 +41,18 @@ HandShakePacket::HandShakePacket(const std::string & hostname,
 	this->hostname.assign(hostname);
 	this->origin.assign(origin);
 	this->protocol.assign(protocol);
+	this->path.assign("/");
 }
 
 HandShakePacket::~HandShakePacket() {
+}
+
+std::string HandShakePacket::getPath() const {
+	return path;
+}
+
+void HandShakePacket::setPath(std::string path) {
+	this->path = path;
 }
 
 const std::string HandShakePacket::ToString() {
@@ -56,7 +65,7 @@ const std::string HandShakePacket::generateHandShake() {
 #define WS_KEY_ONE "6 4X 3$62 s032`x1"
 #define WS_KEY_TWO "33SY< #]Z9 JE/ F12! 194&9   6"
 
-	str << "GET / HTTP/1.1" << "\r\n";
+	str << "GET " << path << " HTTP/1.1" << "\r\n";
 	str << "Connection: Upgrade" << "\r\n";
 	str << "Host: " << hostname << "\r\n";
 	str << "Origin: " << origin << "\r\n";
