@@ -1,0 +1,9 @@
+WebSocketPLus Copyright Hekar Khani 2011
+
+This is a simple WebSockets library for C++
+
+- Currently it is Windows only (it's pretty easy to add Linux support. Simply implement the LinuxSocket class.)
+- There isn't any security challenge response processing, so do not use this library for production applications!
+- Unittests are part of another prioritary application
+
+Otherwise, have fun.

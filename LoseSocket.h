@@ -1,0 +1,54 @@
+/*
+  WebSocketPlus - A websockets library for C++
+  version 0.1 July 7, 2011
+
+  Copyright (C) 2011
+
+  This software is provided 'as-is', without any express or implied
+  warranty.  In no event will the authors be held liable for any damages
+  arising from the use of this software.
+
+  Permission is granted to anyone to use this software for any purpose,
+  including commercial applications, and to alter it and redistribute it
+  freely, subject to the following restrictions:
+
+  1. The origin of this software must not be misrepresented; you must not
+     claim that you wrote the original software. If you use this software
+     in a product, an acknowledgment in the product documentation would be
+     appreciated but is not required.
+  2. Altered source versions must be plainly marked as such, and must not be
+     misrepresented as being the original software.
+  3. This notice may not be removed or altered from any source distribution.
+
+  Hekar Khani "hekark@gmail.h"
+
+*/
+
+#ifndef LOSESOCKET_H_
+#define LOSESOCKET_H_
+
+#ifdef WIN32
+
+#include <iostream>
+#include <winsock2.h>
+#include <Windows.h>
+#include "Socket.h"
+
+class LoseSocket : public Socket {
+public:
+	LoseSocket();
+	virtual ~LoseSocket();
+
+	virtual void Connect(const std::string& ip_addr, int port);
+	virtual void Close();
+
+	virtual int Read(char *buffer, size_t len);
+	virtual void Write(const char *buffer, size_t len);
+private:
+	bool closed;
+	WSADATA wsaData;
+	SOCKET clientSocket;
+};
+
+#endif // WIN32
+#endif /* LOSESOCKET_H_ */
